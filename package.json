@@ -1,0 +1,29 @@
+{
+  "name": "chihobot",
+  "version": "1.0.0",
+  "description": "a helpful chatbot assistant",
+  "main": "index.js",
+  "scripts": {
+    "test": "nah"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meleeman01/chihoBot.git"
+  },
+  "keywords": [
+    "chihobot"
+  ],
+  "author": "meleeman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Meleeman01/chihoBot/issues"
+  },
+  "homepage": "https://github.com/Meleeman01/chihoBot#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.1.2",
+    "brain.js": "^2.0.0-beta.2",
+    "irc-upd": "^0.11.0",
+    "lmgtfy": "^2.0.1",
+    "strict-uri-encode": "^2.0.0"
+  }
+}
