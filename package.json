@@ -20,10 +20,15 @@
   },
   "homepage": "https://github.com/Meleeman01/chihoBot#readme",
   "dependencies": {
+    "@nlpjs/basic": "^4.18.1",
+    "@nlpjs/neural": "^4.17.0",
+    "@nlpjs/similarity": "^4.17.0",
     "better-sqlite3": "^7.1.2",
     "brain.js": "^2.0.0-beta.2",
+    "date-fns": "^2.16.1",
     "irc-upd": "^0.11.0",
     "lmgtfy": "^2.0.1",
+    "node-fetch": "^2.6.1",
     "strict-uri-encode": "^2.0.0"
   }
 }

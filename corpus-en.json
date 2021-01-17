@@ -1,0 +1,122 @@
+{
+  "name": "chiho corpus",
+  "locale": "en-US",
+  "data": [
+    {
+      "intent": "chiho.birthday",
+      "utterances": [
+        "when is your birthday",
+        "when do you celebrate your birthday",
+        "when were you born",
+        "when do you have birthday",
+        "date of your birthday"
+      ],
+      "answers": [
+        "today.",
+        "I was born yesterday if my memory serves me correctly",
+        "I'm born as soon as that fucker Meleeman keeps my process alive."
+      ]
+    },
+    {
+      "intent":"search",
+      "utterances":[
+          "can you search",
+          "search",
+          "chiho search"
+        ]
+    },
+    {
+      "intent":"chiho.bitcoin",
+      "utterances":[
+          "what is the price of bitcoin",
+          "can you tell me what bitcoin is up to now?",
+          "how much is bitcoin in USD?",
+          "tell me the price of bitcoin",
+          "whats bitcoin upto today?",
+          "bitcoin"
+      ],
+      "answers": [
+         "looks like you asked a bitcoin question, i have the library, but Meleeman hasn't hooked me up to the API yet. Ask rachel to remind him about it"
+      ]
+    },
+    {
+      "intent":"addressing.chiho",
+      "utterances":[
+          "hi",
+          "hey",
+          "whats up?",
+          "how are you?"
+        ],
+      "answers": [
+        "what is it?",
+        "what do you want?",
+        "hiiiiiiiii"
+      ]
+    },
+    {
+      "intent":"chiho.help",
+      "utterances":[
+        "!help",
+        "--help",
+        "what can you do chiho?",
+        "what do you know?"
+      ],
+      "answers":[
+        "I can help you search the web, report crypto activity, and do some small talk. Meleeman is working hard to develop more. you can say 'chiho help' to see this message, 'chiho search' to search followed by any string of characters you wish. ask me the price of bitcoin sometime ;)"
+      ]
+    },
+    {
+      "__comment":"this is FOR THE CURRENT DAY",
+      "intent":"chiho.time.day",
+      "utterances":[
+        "what day is it today?",
+        "what day of the week is it?",
+        "what is today?"
+      ],
+      "answers":[
+          "today is",
+          "It's a"
+        ]
+    },
+    {
+      "__comment":"THIS IS FOR THE DATE----------------------------",
+      "intent":"chiho.time.date",
+      "utterances":[
+        "what is todays date?",
+        "what's the date?",
+        "what day is it?",
+        "whats the date?"
+      ],
+      "answers":[
+          "Today is",
+          "The current date last I checked is",
+          "It's"
+        ]
+    },
+    {
+      "__comment":"this is FOR THE TIME",
+      "intent":"chiho.time",
+      "utterances":[
+        "what time is it?",
+        "what is the time?"
+      ],
+      "answers":[
+          "the current time is",
+          "It's "
+        ]
+    },
+    {
+      "intent":"chiho.math",
+      "utterances":[
+        "what is 5 + 5?",
+        "what is is the square root of 49?",
+        "what is the value of x given the equation 5 = 3x/5?"
+      ],
+      "answers":[
+          "I'm not very good at math, but i think the answer is uhh... idk.",
+          "Bitch i don't know math :(",
+          "I have no idea about numbers, uh maybe i could search it?"
+        ]
+    }
+  ]
+}
