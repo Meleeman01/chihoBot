@@ -26,14 +26,18 @@
         ]
     },
     {
-      "intent":"chiho.bitcoin",
+      "intent":"chiho.crypto",
       "utterances":[
-          "what is the price of bitcoin",
-          "can you tell me what bitcoin is up to now?",
-          "how much is bitcoin in USD?",
-          "tell me the price of bitcoin",
-          "whats bitcoin upto today?",
-          "bitcoin"
+          "what is the price of ",
+          "can you tell me what is up to now?",
+          "how much is in USD?",
+          "tell me the price of ",
+          "bitcoin",
+          "litecoin",
+          "ethereum",
+          "eth",
+          "dash",
+          "eos"
       ],
       "answers": [
          "looks like you asked a bitcoin question, i have the library, but Meleeman hasn't hooked me up to the API yet. Ask rachel to remind him about it"
@@ -108,14 +112,31 @@
     {
       "intent":"chiho.math",
       "utterances":[
-        "what is 5 + 5?",
-        "what is is the square root of 49?",
+        "5 + 5?",
+        "square root of 49?",
         "what is the value of x given the equation 5 = 3x/5?"
       ],
       "answers":[
           "I'm not very good at math, but i think the answer is uhh... idk.",
           "Bitch i don't know math :(",
           "I have no idea about numbers, uh maybe i could search it?"
+        ]
+    },
+    {
+      "intent":"chiho.thanks",
+      "utterances":[
+        "thanks",
+        "i appreciate it",
+        "thank you so much",
+        "thanks for your help"
+      ],
+      "answers":[
+          "ofcourse :)",
+          "you're welcome",
+          "don't worry about it -_-",
+          "don't worry about it :D",
+          "it's nothing",
+          "you're too kind"
         ]
     }
   ]

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const irc = require('irc-upd')
 const fetch = require('node-fetch')
 const uriEncode = require('strict-uri-encode')
@@ -32,35 +34,99 @@ client.join(channel, function(){
 function time(format) {
 	let currentDate = new Date()
 	let day = currentDate.getDay()
-	let hour = currentDate.getHours()
-	let date = currentDate.getDate()
-	let time = currentDate.getTime()
+	let hour = currentDate.getHours() 
 	const days = {1:'monday',2:'tuesday',3:'wednesday',4:'thursday',5:'friday',6:'saturday',0:'sunday'}
-	const hours = {0:1,1:2,2:3,3:4,4:5,5:6,6:7,7:8,8:9,9:10,10:11,11:12,12:13,13:14,14:15,15:16,16:17,17:18,18:19,19:20,20:21,21:22,22:23,23:24}
-	if (typeof format == 'string' && format == 'day') {
-		return days[day]
+
+	if (typeof format == 'string') {
+		if (format == 'day') {
+			return days[day]
+		}
+		else if (format == 'hour') {
+			return hour + 1 //hours counted from 0-23
+		}
+		else if (format == 'date') {
+			return new Date().toLocaleDateString("en-US")
+		}
+		else if (format == 'time') {
+			return new Date().toLocaleTimeString("en-US")
+		}
+		else throw new Error('String entered doesn\'t match any case in the time function, try passing in day, hour, date, or time.') //update this as needed. 
 	}
-	else if (typeof format == 'string' && format == 'hour') {
-		return hours[hour]
+	
+	else throw new TypeError('You need to pass in a string to the time function like this: time("day")')
+}
+
+//tasks to be run daily
+function daily() {
+	//day in millisecs
+	let timer = setTimeout(function(arg){
+		console.log('i ran');
+		const btc = crypto('bitcoin')
+		const ltc = crypto('litecoin')
+		const eth = crypto('eth')
+		const dash = crypto('dash')
+		const eos = crypto('eos')
+		client.say(channel,"The price of "+btc.name+" is "+btc.price+" USD")
+		client.say(channel,"The price of "+ltc.name+" is "+ltc.price+" USD")
+		client.say(channel,"The price of "+eth.name+" is "+eth.price+" USD")
+		client.say(channel,"The price of "+dash.name+" is "+dash.price+" USD")
+		client.say(channel,"The price of "+eos.name+" is "+eos.price+" USD")
+	},86400000);
+	//get the current time 
+}
+
+//crypto module
+async function crypto(utterance) {
+	const link = await process.env.CRYPTO_COMPARE
+	if (utterance.includes('bitcoin') || utterance.includes('btc')) {
+		return {price:await fetchCrypto(link+'fsym=BTC&tsyms=USD'),name: 'bitcoin'}
 	}
-	else if (typeof format == 'string' && format == 'date') {
-		return new Date().toLocaleDateString("en-US")
+	else if (utterance.includes('litecoin')|| utterance.includes('ltc')) {
+		return {price:await fetchCrypto(link+'fsym=LTC&tsyms=USD'),name: 'litecoin'}
 	}
-	else if (typeof format == 'string' && format == 'time') {
-		return time
+	else if (utterance.includes('eth')) {
+		return {price:await fetchCrypto(link+'fsym=ETH&tsyms=USD'),name:'ethereum'}
 	}
-	else console.log(format)
+	else if (utterance.includes('dash')) {
+		return {price:await fetchCrypto(link+'fsym=DASH&tsyms=USD'),name:'dash'}
+	}
+	else if (utterance.includes('eos')) {
+		return {price:await fetchCrypto(link+'fsym=EOS&tsyms=USD'),name:'eos'}
+	}
+	else {
+		return false
+	}
+}
+
+async function fetchCrypto(link) {
+	const response = await fetch(link)
+		.then(response => response.json())
+		.then((data) => {
+			console.log(data)
+			return data['USD'] //returns only the price according to api
+		})
+	console.log(response)
+	return response
 }
 
 async function animeAnnouncement() {
-	if (await time('hour') == 19 && await time('day') == 1) {
+	if (await time('hour') == 20 && await time('day') == 'monday') {
 		console.log('LOLOLOLLOLOLOL')
-		client.say(channel,'OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#wetfish','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#dryfish','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#freefish','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#crypto','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#botspam','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#poomp','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#botspam','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#botspam','OMFG anime is starting soon! Get in and/or join #anime losers!')
+		client.say('#botspam','OMFG anime is starting soon! Get in and/or join #anime losers!')
 	}
 }
 
 //main business end of the bot.
 (async () => {
+
 	const dock = await dockStart({ use: ['Basic']})
 	const nlp = dock.get('nlp')
 	nlp.addLanguage('en')
@@ -75,7 +141,7 @@ async function animeAnnouncement() {
 		console.log(from + ' => ' + to + ': ' + message)
 		message = message.toLowerCase()
 		
-
+		//if i'm being addressed run the following
 		if ( message.startsWith(config.name.toLowerCase())) {
 			const response = await nlp.process('en', message)
 			console.log(response);
@@ -94,16 +160,26 @@ async function animeAnnouncement() {
 					.then((data) => {
 						console.log(data)
 						
-						if (searchCount<5) {
+						if (searchCount < 5) {
 					
-					client.say(channel,from+' here you go: '+data.Abstract)
+						client.say(channel,from+' here you go: '+data.Abstract)
+					}
+					else {
+						client.say(channel,'Let me duckduckgo that for you '+from+' ;)'+'here you go: '+' https://lmddgtfy.net/?q='+uriEncode(query))
+					}
+				})
+				
+				
+				
+			}
+			else if (response.intent == "chiho.crypto") {
+				let cryptoPrice = await crypto(response.utterance)
+				if (!cryptoPrice) {
+					client.say(channel,"sorry i don't know that one yet contact meleeman to add it")
 				}
 				else {
-					client.say(channel,'Let me duckduckgo that for you '+from+' ;)'+'here you go: '+' https://lmddgtfy.net/?q='+uriEncode(query))
+					client.say(channel,"The price of "+cryptoPrice.name+" is "+cryptoPrice.price+" USD")
 				}
-					})
-				
-				
 				
 			}
 			else if(response.intent == "chiho.time.day"){
@@ -130,7 +206,7 @@ async function animeAnnouncement() {
 
 		if (from == 'fishy') {
 			if (message.includes('dong') || message.includes('dick')||message.includes('butt')) {
-				client.say(channel,'fuck off '+from +'ur gross')
+				client.say(channel,'fuck off '+from +' ur gross')
 			}
 		}
 

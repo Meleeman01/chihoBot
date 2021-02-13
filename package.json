@@ -4,7 +4,8 @@
   "description": "a helpful chatbot assistant",
   "main": "index.js",
   "scripts": {
-    "test": "nah"
+    "test": "nah",
+    "start":"pm2 start index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "better-sqlite3": "^7.1.2",
     "brain.js": "^2.0.0-beta.2",
     "date-fns": "^2.16.1",
+    "dotenv": "^8.2.0",
     "irc-upd": "^0.11.0",
     "lmgtfy": "^2.0.1",
     "node-fetch": "^2.6.1",
