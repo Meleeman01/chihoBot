@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nah",
-    "start":"pm2 start index.js"
+    "start": "pm2 start index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "dotenv": "^8.2.0",
     "irc-upd": "^0.11.0",
     "lmgtfy": "^2.0.1",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "strict-uri-encode": "^2.0.0"
   }
