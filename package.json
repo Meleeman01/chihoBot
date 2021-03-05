@@ -29,7 +29,6 @@
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "irc-upd": "^0.11.0",
-    "lmgtfy": "^2.0.1",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "strict-uri-encode": "^2.0.0"
