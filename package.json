@@ -32,5 +32,8 @@
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "strict-uri-encode": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0"
   }
 }
