@@ -3,6 +3,10 @@ require('dotenv').config();
 
 const channel = process.env.CHANNEL;
 
+function requireUncached(module) {
+	delete require.cache[require.resolve(module)];
+	return require(module);
+}
 
 const chiho = {
 	searchCount:0,
@@ -10,10 +14,11 @@ const chiho = {
 	uriEncode: require('strict-uri-encode'),
 	client: require('./config/irc-connection'),
 	config: require('./config/server'),
-	time: require('./modules/time'),
-	crypto: require('./modules/crypto'),
-	dockStart:require('@nlpjs/basic'),
+	time: requireUncached('./modules/time'),
+	crypto: requireUncached('./modules/crypto'),
+	dockStart:requireUncached('./node_modules/@nlpjs/basic'),
 	init: async function init() {
+		console.log(chiho.crypto);
 		chiho.listen();
 	},
 	listen: async function () {

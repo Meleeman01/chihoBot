@@ -6,4 +6,4 @@ module.exports = {
 	userName: 'ChihoBot',
 	realName: 'Chiho Sasaki',
 	channels: ['#wetfish', '#botspam', '#poomp', '#freefish', '#crypto']
-}
+};

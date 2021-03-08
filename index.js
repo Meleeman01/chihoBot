@@ -3,7 +3,6 @@ require('dotenv').config();
 const fs = require('fs');
 const channel = process.env.CHANNEL;
 const client = require('./config/irc-connection');
-//const chiho = require('./chihobot');
 const chihoPath = __dirname+'/chihobot.js';
 
 //example
@@ -39,7 +38,8 @@ const unload = async function (path,modules,mod) {
 			modules[mod].unload();
 			await delete modules[mod];
 			await delete require.cache[require.resolve(chihoPath)];
-
+			
+			console.log(require.cache);
 			await console.log(`>>> chiho unloaded`);
 		}
 	}
@@ -74,8 +74,8 @@ client.addListener('pm', async function (from, message) {
 		load(chihoPath,modules,mod);
 	}
 	if (from == 'meleeman' && message == ':reload chiho') {
-		load(chihoPath,modules,mod);
 		unload(chihoPath,modules,mod);
+		load(chihoPath,modules,mod);
 	}
 });
 

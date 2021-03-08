@@ -26,6 +26,7 @@
     "@nlpjs/similarity": "^4.17.0",
     "better-sqlite3": "^7.1.2",
     "brain.js": "^2.0.0-beta.2",
+    "clear-require": "^3.0.0",
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "irc-upd": "^0.11.0",

@@ -1,29 +1,29 @@
 //crypto
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 //crypto module
 const crypto = {
 	find:async function (utterance) {
-		const link = await process.env.CRYPTO_COMPARE
+		const link = await process.env.CRYPTO_COMPARE;
 		if (utterance.includes('bitcoin') || utterance.includes('btc')) {
-			return {price:await crypto.fetch(link+'fsym=BTC&tsyms=USD'),name: 'bitcoin'}
+			return {price:await crypto.fetch(link+'fsym=BTC&tsyms=USD'),name: 'bitcoin'};
 		}
 		else if (utterance.includes('litecoin')|| utterance.includes('ltc')) {
-			return {price:await crypto.fetch(link+'fsym=LTC&tsyms=USD'),name: 'litecoin'}
+			return {price:await crypto.fetch(link+'fsym=LTC&tsyms=USD'),name: 'litecoin'};
 		}
 		else if (utterance.includes('eth')) {
-			return {price:await crypto.fetch(link+'fsym=ETH&tsyms=USD'),name:'ethereum'}
+			return {price:await crypto.fetch(link+'fsym=ETH&tsyms=USD'),name:'ethereum'};
 		}
 		else if (utterance.includes('dash')) {
-			return {price:await crypto.fetch(link+'fsym=DASH&tsyms=USD'),name:'dash'}
+			return {price:await crypto.fetch(link+'fsym=DASH&tsyms=USD'),name:'dash'};
 		}
 		else if (utterance.includes('eos')) {
-			return {price:await crypto.fetch(link+'fsym=EOS&tsyms=USD'),name:'eos'}
+			return {price:await crypto.fetch(link+'fsym=EOS&tsyms=USD'),name:'eos'};
 		}
 		else if (utterance.includes('doge')) {
-			return {price:await crypto.fetch(link+'fsym=DOGE&tsyms=USD'),name:'doge'}
+			return {price:await crypto.fetch(link+'fsym=DOGE&tsyms=USD'),name:'doge'};
 		}
 		else {
-			return false
+			return false;
 		}
 	},
 	fetch:async function(link) {
