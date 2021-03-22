@@ -6,7 +6,7 @@ const client = require('./config/irc-connection');
 const chihoPath = __dirname+'/chihobot.js';
 
 //example
-// {
+// ,{
 //       "intent": "chiho.loveconfession",
 //       "utterances": [
 //         "i love you",
@@ -20,7 +20,7 @@ const chihoPath = __dirname+'/chihobot.js';
 //			"I hate you.",
 //			"no."
 //       ]
-//     },
+//     }
 
 const moduleExists = function(path) {
 	if(fs.existsSync(path)) {
@@ -38,7 +38,7 @@ const unload = async function (path,modules,mod) {
 			modules[mod].unload();
 			await delete modules[mod];
 			await delete require.cache[require.resolve(chihoPath)];
-			
+
 			console.log(require.cache);
 			await console.log(`>>> chiho unloaded`);
 		}

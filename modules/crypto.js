@@ -30,15 +30,15 @@ const crypto = {
 		const response = await fetch(link)
 			.then(response => response.json())
 			.then((data) => {
-				console.log(data)
-				return data['USD'] //returns only the price according to api
-			})
-		console.log(response)
-		return response
+				console.log(data);
+				return data['USD']; //returns only the price according to api
+			});
+		console.log(response);
+		return response;
 	}
-}
+};
 
 
 
 
-module.exports = crypto
+module.exports = crypto;
